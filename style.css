@@ -1,0 +1,63 @@
+:root {
+   --out: 49%;
+   --grid-w: 5;
+   --grid-h: 5;
+   --cell-side: min(calc(50vh / var(--grid-h)), calc(50vw / var(--grid-w)));
+}
+
+body {
+   background-color: rgb(29, 29, 29);
+   display: flex;
+   overflow: hidden;
+}
+ 
+#grid {
+   position: absolute;
+   display: grid;
+   right: 50%;
+   bottom: 50%;
+   grid-template-columns: repeat(var(--grid-w), var(--cell-side));
+   grid-template-rows: repeat(var(--grid-h), var(--cell-side));
+   margin: auto;
+   transform: translate(50%, 50%) skewY(10deg);
+}
+ 
+.grid-item {
+   position: relative;
+   width: var(--cell-side);
+   height: var(--cell-side);
+   margin: 0;
+   padding: 0;
+   transition: transform 0.2s ease-out;
+   box-sizing: border-box;
+}
+
+.grid-item:hover {
+   transform: translate(calc(-1 * var(--out)), var(--out));
+}
+
+.side-box {
+   --w: 50%;
+   --h: 100%;
+   position: absolute;
+   top: 0;
+   right: calc(-1 * var(--w));
+   width: var(--w);
+   height: var(--h);
+   box-sizing: border-box;
+   transform-origin: left top;
+   transform: skewY(135deg);
+}
+
+.top-box {
+   --h: 50%;
+   --w: 100%;
+   position: absolute;
+   right: 0;
+   top: calc(-1 * var(--h));
+   width: var(--w);
+   height: var(--h);
+   box-sizing: border-box;
+   transform-origin: right bottom;
+   transform: skewX(135deg);
+}
